@@ -16,7 +16,7 @@ using JetBrains.Util;
 namespace GammaJul.ForTea.Core.Psi.Resolve.Assemblies.Impl
 {
 	[SolutionComponent]
-	public sealed class T4AssemblyReferenceResolver : IT4AssemblyReferenceResolver
+	public class T4AssemblyReferenceResolver : IT4AssemblyReferenceResolver
 	{
 		[NotNull]
 		private IT4LightWeightAssemblyReferenceResolver LightWeightResolver { get; }
@@ -50,7 +50,7 @@ namespace GammaJul.ForTea.Core.Psi.Resolve.Assemblies.Impl
 			return Resolve(pathWithMacros);
 		}
 
-		public FileSystemPath Resolve([NotNull] IT4PathWithMacros pathWithMacros) =>
+		public virtual FileSystemPath Resolve([NotNull] IT4PathWithMacros pathWithMacros) =>
 			ResolveAsAbsolutePath(pathWithMacros)
 			?? ResolveAsLightReference(pathWithMacros)
 			?? ResolveAsAssemblyName(pathWithMacros)
