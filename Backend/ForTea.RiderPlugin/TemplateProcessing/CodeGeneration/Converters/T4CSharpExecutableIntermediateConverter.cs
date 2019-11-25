@@ -64,14 +64,15 @@ namespace JetBrains.ForTea.RiderPlugin.TemplateProcessing.CodeGeneration.Convert
 
 		protected override void AppendConstructor()
 		{
+			if (!IntermediateResult.HasHost) return;
 			AppendIndent();
-			Result.AppendLine("public GeneratedTextTransformation()");
+			Result.Append($"public GeneratedTextTransformation({T4TextTemplatingFQNs.Lifetime} lifetime)");
 			AppendIndent();
 			Result.AppendLine("{");
 			PushIndent();
-			if (IntermediateResult.HasHost) AppendHostInitialization();
+			AppendHostInitialization();
 			PopIndent();
-			PopIndent();
+			AppendIndent();
 			Result.AppendLine("}");
 		}
 
@@ -81,6 +82,8 @@ namespace JetBrains.ForTea.RiderPlugin.TemplateProcessing.CodeGeneration.Convert
 			Result.AppendLine($"Host = new {T4TextTemplatingFQNs.HostImpl}(");
 			PushIndent();
 			{
+				AppendIndent();
+				Result.AppendLine("lifetime,");
 				AppendIndent();
 				Result.AppendLine($"new {T4TextTemplatingFQNs.Macros}");
 				AppendIndent();
