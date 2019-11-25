@@ -63,7 +63,7 @@ open class T4RunFileTestBase : BaseTestWithSolution() {
     manager.forceCompilationInTests = true
   }
 
-  protected fun doTest(resultExtension: String? = null, dumpCsproj: Boolean = true) {
+  protected fun doTest(resultExtension: String? = null, dumpCsproj: Boolean = false) {
     executeT4File()
     saveSolution()
     dumpExecutionResult(resultExtension)

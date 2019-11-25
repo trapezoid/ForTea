@@ -7,27 +7,27 @@ import org.testng.annotations.Test
 //   so they cannot contain spaces!
 
 class T4RunFileTest : T4RunFileTestBase() {
-  @Test fun testThatFileCanBeExecuted() = doTest()
-  @Test fun testThatHostSpecificTemplateCanBeExecuted() = doTest()
+  @Test fun testThatFileCanBeExecuted() = doTest(dumpCsproj = true)
+  @Test fun testThatHostSpecificTemplateCanBeExecuted() = doTest(dumpCsproj = true)
   @Test fun testThatHostCanSetResultExtension() {
-    doTest(".cshtml")
+    doTest(".cshtml", true)
     assertNoOutputWithExtension(".html")
   }
 
-  @Test fun testThatTtincludeFileCanBeIncluded() = doTest()
-  @Test fun testThatCSharpFileCanBeIncluded() = doTest()
-  @Test fun testThatVsMacrosAreResolved() = doTest()
-  @Test fun testThatMsBuildPropertiesAreResolved() = doTest()
-  @Test fun testThatAssemblyCanBeReferenced() = doTest()
-  @Test fun testTransitiveReferencesInRuntime() = doTest()
+  @Test fun testThatTtincludeFileCanBeIncluded() = doTest(dumpCsproj = true)
+  @Test fun testThatCSharpFileCanBeIncluded() = doTest(dumpCsproj = true)
+  @Test fun testThatVsMacrosAreResolved() = doTest(dumpCsproj = true)
+  @Test fun testThatMsBuildPropertiesAreResolved() = doTest(dumpCsproj = true)
+  @Test fun testThatAssemblyCanBeReferenced() = doTest(dumpCsproj = true)
+  @Test fun testTransitiveReferencesInRuntime() = doTest(dumpCsproj = true)
   @Test fun testTransitiveReferencesInCompilation() {
     executeT4File()
     saveSolution()
     assertNoOutputWithExtension(".cs")
   }
-//  @Test fun testThatFileCanBeExecutedInDotNetCoreProject() = doTest()
-  @Test fun testThatTemplateCanProduceBigXml() = doTest()
-  @Test fun testThatTemplateIsCaseInsensitive() = doTest()
+//  @Test fun testThatFileCanBeExecutedInDotNetCoreProject() = doTest(dumpCsproj = true)
+  @Test fun testThatTemplateCanProduceBigXml() = doTest(dumpCsproj = true)
+  @Test fun testThatTemplateIsCaseInsensitive() = doTest(dumpCsproj = true)
 //  @Test fun testThatFileExtensionCanBeUpdatedCorrectly() {
 //    executeT4File()
 //    t4File.writeText(t4File.readText().replace(".fs", ".cs"))
@@ -38,16 +38,16 @@ class T4RunFileTest : T4RunFileTestBase() {
 //    dumpCsproj()
 //    assertNoOutputWithExtension(".fs")
 //  }
-  @Test fun testThatVsDefaultTemplateCanBeExecuted() = doTest()
-  @Test fun testThatDefaultExtensionIsCs() = doTest(".cs")
-  @Test fun testThatFileWithT4ExtensionCanBeExecuted() = doTest()
-  @Test fun testThatExtensionCanContainDot() = doTest(".txt")
-  @Test fun testThatExtensionCanBeWithoutDot() = doTest(".txt")
-  @Test fun testTemplateWithLineBreakMess() = doTest()
-  @Test fun testThatFeatureBlocksCanContainManyNewLines() = doTest()
-  @Test fun testHowTextInFeatureIsHandled() = doTest()
-//  @Test fun testThatOutputOfUnbuiltProjectCanBeReferenced() = doTest()
-  @Test fun testHostInHostSpecificTemplate() = doTest()
+  @Test fun testThatVsDefaultTemplateCanBeExecuted() = doTest(dumpCsproj = true)
+  @Test fun testThatDefaultExtensionIsCs() = doTest(".cs", true)
+  @Test fun testThatFileWithT4ExtensionCanBeExecuted() = doTest(dumpCsproj = true)
+  @Test fun testThatExtensionCanContainDot() = doTest(".txt", true)
+  @Test fun testThatExtensionCanBeWithoutDot() = doTest(".txt", true)
+  @Test fun testTemplateWithLineBreakMess() = doTest(dumpCsproj = true)
+  @Test fun testThatFeatureBlocksCanContainManyNewLines() = doTest(dumpCsproj = true)
+  @Test fun testHowTextInFeatureIsHandled() = doTest(dumpCsproj = true)
+//  @Test fun testThatOutputOfUnbuiltProjectCanBeReferenced() = doTest(dumpCsproj = true)
+  @Test fun testHostInHostSpecificTemplate() = doTest(dumpCsproj = true)
   @Test fun testHostInNonHostSpecificTemplate() {
     executeT4File()
     saveSolution()
@@ -55,10 +55,10 @@ class T4RunFileTest : T4RunFileTestBase() {
     dumpCsproj()
   }
 
-  @Test fun testInProjectTransitiveIncludeResolution() = doTest()
-  @Test fun testOutOfProjectTransitiveIncludeResolution() = doTest()
-  @Test fun testInProjectNonTrivialIncludeResolution() = doTest()
+  @Test fun testInProjectTransitiveIncludeResolution() = doTest(dumpCsproj = true)
+  @Test fun testOutOfProjectTransitiveIncludeResolution() = doTest(dumpCsproj = true)
+  @Test fun testInProjectNonTrivialIncludeResolution() = doTest(dumpCsproj = true)
   @Test fun testDefaultReferences() = doTest()
-  @Test fun testHostSpecificDefaultReferences() = doTest();
+  @Test fun testHostSpecificDefaultReferences() = doTest()
   @Test fun testThatHostSpecificTemplateCanAccessEnvDTE() = doTest()
 }
