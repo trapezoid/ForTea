@@ -58,7 +58,10 @@ class T4RunFileTest : T4RunFileTestBase() {
   @Test fun testInProjectTransitiveIncludeResolution() = doTest(dumpCsproj = true)
   @Test fun testOutOfProjectTransitiveIncludeResolution() = doTest(dumpCsproj = true)
   @Test fun testInProjectNonTrivialIncludeResolution() = doTest(dumpCsproj = true)
-  @Test fun testDefaultReferences() = doTest()
-  @Test fun testHostSpecificDefaultReferences() = doTest()
-  @Test fun testThatHostSpecificTemplateCanAccessEnvDTE() = doTest()
+  // @Test fun testDefaultReferences() = doTest()
+  // @Test fun testHostSpecificDefaultReferences() = doTest()
+  // @Test fun testThatHostSpecificTemplateCanAccessEnvDTE() = doTest()
+  // @Test fun testBasicEnvDTEFunctions() = doTest()
+  // @Test fun testSolutionFunctions() = doTest()
+  // @Test fun testProjectFunctions() = doTest()
 }
